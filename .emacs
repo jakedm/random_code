@@ -38,7 +38,8 @@
 ;;(when (< emacs-major-version 24)
 ;; For important compatibility libraries like cl-lib
 ;;(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-(package-initialize)   
+(package-initialize)
+(elpy-enable)   
 
 (add-to-list 'load-path "~/.emacs.d/plugins/")
 (require 'dirtree)
@@ -78,3 +79,10 @@
 	    "Line %l--"
 	    '(-3 . "%P")
 	    "-%-")) 
+
+;; Major modes ;;
+
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(defun turn-on-anaconda () (anaconda-mode 1))
+(add-hook 'python-mode-hook 'turn-on-anaconda)

@@ -1,9 +1,10 @@
 ;;; nlinum-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-(add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
+
 
-;;;### (autoloads nil "nlinum" "nlinum.el" (22254 55663 462670 760000))
+;;;### (autoloads (global-nlinum-mode nlinum-mode) "nlinum" "nlinum.el"
+;;;;;;  (22182 21279 250424 198000))
 ;;; Generated autoloads from nlinum.el
 
 (autoload 'nlinum-mode "nlinum" "\
@@ -39,9 +40,15 @@ See `nlinum-mode' for more information on Nlinum mode.
 
 ;;;***
 
+;;;### (autoloads nil nil ("nlinum-pkg.el") (22182 21279 267699 826000))
+
+;;;***
+
+(provide 'nlinum-autoloads)
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
+;; coding: utf-8
 ;; End:
 ;;; nlinum-autoloads.el ends here
