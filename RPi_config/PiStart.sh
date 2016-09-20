@@ -5,29 +5,35 @@
 # This code is an automated setup script for the RW Raspberry Pi environment. It
 #   installs the apache server, MySQL, PHP, GCC and G++, and whatever apps the
 #   user wants to install. This is based on Jake's Github folder, which includes
-#   a personalized .bashrc, .emacs/.emacs.d, and .tmux.conf.
+#   a personalized .bashrc, .emacs/.emacs.d, and .tmux.conf. This script is built
+#   to be run in the raspbian environment, and it (obviously) also assumes that
+#   Git is installed correctly.
 #
-# BEFORE RUNNING: Install git, and download this repo (github.com/jakedm/random_code/RPi_config).
-#
+# BEFORE RUNNING:
+#   1) Install git, and download this repo (github.com/jakedm/random_code/RPi_config).
+#   2) Make sure you have sudo permissions.
 #
 #######################################################################
 APACHE="apache2 apache2-doc apache2-utils"
 MYSQL="mysql-server mysql-client libmysqlclient-dev"
 PHP="libapache2-mod-php5 php5 php-pear php5-xcache php5-mysql phpmyadmin"
 OTHER="libmodmus-dev snmp gcc-6 g++-6"
-USER_APPS="tmux htop emacs filezilla"
+USER_APPS="tmux htop emacs"
 #ALT_APPS="codeblocks filezilla"
 
 # Bottom-level Config options (username, password, etc.)
 sudo raspi-config
-echo "Are you satisfied with your configuration settings? (y or n)\n"
-while [ read INPUT ]; do
-    break 3
-    if [ "$INPUT" == "n" ]; then
+read -s -p "Are you satisfied with your configuration settings? (y or n)\n" ANS
+DONE = 0
+while [ DONE == 0 ]; do
+    if [ "$ANS" == "n" ]; then
         sudo raspi-config
-        echo "Are you satisfied with your configuration settings? (y or n)\n"
+        read -s -p "Are you satisfied with your configuration settings? (y or n)\n" ANS
+    else if [ "$ANS" == "y" ]; then
+        let DONE = DONE + 1
     else
-        break
+        echo "Input not understood; Please enter y or n.\n"
+        read -s -p "Are you satisfied with your configuration settings? (y or n)\n" ANS
     fi
 done
 echo "\n\n"
