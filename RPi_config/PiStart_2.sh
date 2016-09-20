@@ -18,7 +18,7 @@
 APACHE="apache2 apache2-doc apache2-utils"
 MYSQL="mysql-server mysql-client libmysqlclient-dev"
 PHP="libapache2-mod-php5 php5 php-pear php5-xcache php5-mysql phpmyadmin"
-OTHER="libmodmus-dev snmp"
+OTHER="libmodbus-dev snmp"
 USER_APPS="tmux htop emacs codeblocks codeblocks-contrib filezilla"
 
 # Updating RPi system
@@ -31,22 +31,22 @@ printf "\n\n\n"
 # SHOULD REBOOT HERE
 
 printf "Installing Apache packages...\n"
-sudo apt-get install "$APACHE" -y
+sudo apt-get install -y $APACHE
 printf "Done.\n"
 printf "\n\n"
 
 printf "Installing MySQL packages...\n"
-sudo apt-get install "$MYSQL" -y
+sudo apt-get install -y $MYSQL
 printf "Done.\n"
 printf "\n\n"
 
 printf "Installing PHP packages...\n"
-sudo apt-get install "$PHP" -y
+sudo apt-get install -y $PHP
 printf "Done.\n"
 printf "\n\n"
 
 printf "Installing misc. packages...\n"
-sudo apt-get install "$OTHER" -y
+sudo apt-get install -y $OTHER
 printf "Done.\n"
 printf "\n\n"
 
@@ -55,29 +55,20 @@ echo "Include /etc/phpmyadmin/apache.conf" | sudo tee -a /etc/apache2/apache2.co
 printf "\n\n"
 
 printf "Installing user applications...\n"
-sudo apt-get install "$USER_APPS" -y
+sudo apt-get install -y $USER_APPS
 printf "Done.\n"
 printf "\n\n"
 
 # Move config files to correct location
 printf "Moving conf files from local github repo to home dir.\n"
-mv ~/Public/random_code/.tmux.conf ~
-mv ~/Public/random_code/.emacs ~
-mv ~/Public/random_code/.emacs.d ~
-mv ~/Public/random_code/.bashrc ~
+mv ./.tmux.conf ~
+mv ./.emacs ~
+mv ./.emacs.d ~
+mv ./.bashrc ~
 
 sudo apt-get clean
 
-read -s -p -r "You need to reboot for some of these settings to take place. Would you like to do that now? (y or n)\n" REBOOT
-IS_DONE=0
-while [ "$IS_DONE" -lt 1 ]; do
-    if test "$REBOOT" = "y"; then
-        sudo reboot
-    elif  test "$REBOOT" = "n"; then
-        let "$IS_DONE" = "$IS_DONE" + 1
-        printf "\n\n\nScript finished.\n\n\n"
-    else:
-        printf "Input not understood; Please enter y or n.\n"
-        read -s -p -r "You need to reboot for some of these settings to take place. Would you like to do that now? (y or n)\n" REBOOT
-    fi
-done
+printf "Shutdown to occur in 5 seconds."
+sleep 5
+sudo shutdown 0
+

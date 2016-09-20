@@ -19,20 +19,6 @@ printf "\t2) Enable Overscan (Under Advanced).\n"
 printf "\t3) Enable SPI, load the SPI kernel (under Advanced).\n"
 printf "\t4) Enable SSH (Under Advanced).\n"
 sudo raspi-config
-read -s -p -r "Are you satisfied with your configuration settings? (y or n)\n" ANS
-IS_DONE=0
-while [ "$IS_DONE" -lt 1 ]; do
-    "$IS_DONE" = 0
-    if test "$ANS" = "n"; then
-        sudo raspi-config
-        read -s -p -r "Are you satisfied with your configuration settings? (y or n)\n" ANS
-    elif test "$ANS" = "y"; then
-        let "$IS_DONE" = "$IS_DONE" + 1
-    else
-        printf "Input not understood; Please enter y or n.\n"
-        read -s -p -r "Are you satisfied with your configuration settings? (y or n)\n" ANS
-    fi
-done
 printf "\n\n"
 printf "System shutting down.\n"
 sudo shutdown 0
