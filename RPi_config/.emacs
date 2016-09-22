@@ -11,7 +11,7 @@
     ((c-mode . "")
      (java-mode . "java")
      (awk-mode . "awk")
-          (other . "gnu"))))
+	 (other . "gnu"))))
  '(custom-enabled-themes (quote (manoj-dark)))
  '(custom-safe-themes
    (quote
@@ -40,6 +40,7 @@
 ;;(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 (add-to-list 'load-path "~/.emacs.d/plugins/")
+(add-to-list 'load-path "~/.emacs.d/elpa/")
 
 ;highlight parentheses when the cursor is next to them
 (require 'paren)
@@ -50,20 +51,20 @@
 (ido-mode 1)
 
 ;; C editing stuff
-(require 'setup-cedet)
-(require 'setup-editing)
-(windmove-default-keybindings)
+;;(windmove-default-keybindings)
 
 (require 'cc-mode)
-(require 'semantic)
-(global-semanticdb-minor-mode 1)
-(global-semantic-idle-scheduler-mode 1)
-(semantic-mode 1)
+;;(require 'semantic)
+;;(global-semanticdb-minor-mode 1)
+;;(global-semantic-idle-scheduler-mode 1)
+;;(semantic-mode 1)
 
 ;; Iffy packages
+
 ;; Projectiles
 (require 'projectile)
 (projectile-global-mode)
+
 ;; Company
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
@@ -74,10 +75,13 @@
 ;; (define-key c++-mode-map  [(control tab)] 'company-complete)
 
 ;; company-c-headers
-(add-to-list 'company-backends 'company-c-headers)
+;; (add-to-list 'company-backends 'company-c-headers)
 
 ;; Set Theme
 (load-theme 'ahungry t)
+
+;; Turn on linum-mode by default
+(add-hook 'prog-mode-hook 'linum-mode)
 
 (setq auto-mode-alist
       (cons
@@ -106,17 +110,24 @@
 
 ;; Build Cool directory tree
 (require 'dirtree)
-(dirtree-mode 1)
+(dirtree-mode)
 
 ;; Major modes ;;
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-
+;;(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;;(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'auto-mode-alist '("\\.c'" . cc-mode))
+(add-to-list 'auto-mode-alist '("\\.h\\'" . cc-mode))
+(add-to-list 'auto-mode-alist '("\\.cpp'" . cc-mode))
 ;; Set C default style (Also "gnu", "bsd", and "java"
 (setq c-default-style "linux")
 
 ;; show unncessary whitespace that can mess up your diff
 (add-hook 'prog-mode-hook (lambda () (interactive) (setq show-trailing-whitespace 1)))
+
+;; Delete trailing white space before closing
+(add-hook 'before-save-hook
+		  'delete-trailing-whitespace)
+
 ;; hs-minor-mode for folding source code
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
 
