@@ -1,23 +1,23 @@
-#-------------------- COLORS  -------------------------- 
+#-------------------- COLORS  --------------------------
 BLACK='\e[0;30m'
-BLUE='\e[0;35m'                                                            
-GREEN='\e[0;32m'                                                           
-CYAN='\e[0;36m'                                                            
-RED='\e[0;31m'                                                             
-PURPLE='\e[0;35m'                                                          
-BROWN='\e[0;33m'                                                           
-LIGHTGRAY='\e[0;37m'                                                       
-DARKGRAY='\e[1;30m'                                                        
-LIGHTBLUE='\e[1;34m'                                                       
-LIGHTGREEN='\e[1;32m'                                                      
-LIGHTCYAN='\e[1;36m'                                                       
-LIGHTRED='\e[1;31m'                                                        
-LIGHTPURPLE='\e[1;35m'                                                     
-YELLOW='\e[1;33m'                                                          
-WHITE='\e[1;37m'                                                           
+BLUE='\e[0;35m'
+GREEN='\e[0;32m'
+CYAN='\e[0;36m'
+RED='\e[0;31m'
+PURPLE='\e[0;35m'
+BROWN='\e[0;33m'
+LIGHTGRAY='\e[0;37m'
+DARKGRAY='\e[1;30m'
+LIGHTBLUE='\e[1;34m'
+LIGHTGREEN='\e[1;32m'
+LIGHTCYAN='\e[1;36m'
+LIGHTRED='\e[1;31m'
+LIGHTPURPLE='\e[1;35m'
+YELLOW='\e[1;33m'
+WHITE='\e[1;37m'
 NC='\e[0m'              # No Color
 
-#-------------------- ZSH DEFAULT RC  -------------------------- 
+#-------------------- ZSH DEFAULT RC  --------------------------
 # Path to your oh-my-zsh installation.
   export ZSH=/home/jake/.oh-my-zsh
 
@@ -79,9 +79,10 @@ plugins=(git)
 
 # User configuration
 
-  export PATH="/home/jake/CNTK/build/release/bin:/usr/local/mpi/bin:/home/jake/CNTK/build/release/bin:/usr/local/mpi/bin:/home/jake/torch/install/bin:/home/jake/torch/install/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+ export PATH="/home/jake/CNTK/build/release/bin:/usr/local/mpi/bin:/home/jake/CNTK/build/release/bin:/usr/local/mpi/bin:/home/jake/torch/install/bin:/home/jake/torch/install/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
-
+ export PKG_CONFIG_PATH='/usr/local/lib/pkgconfig:/home/jake/Downloads/glib-2.50.0/'
+ export LD_LIBRARY_PATH='/usr/local/lib'
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -110,7 +111,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
  export BROWSER="google-chrome"
-#-------------------- ZSH SETTINGS -------------------------- 
+ export TERM="xterm-256color"
+#-------------------- ZSH SETTINGS --------------------------
 
 ## PROMPT ##
 #PS1='\[\033[01;34m\]\u\[\033[01;34m\]@\[\033[01;31m\]\h\[\033[00;34m\]{\[\033[01;34m\]\w\[\033[00;34m\]}\[\033[01;32m\]:\[\033[00m\]'
@@ -128,7 +130,7 @@ bindkey -e
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
-
+HISTIGNORE='ls *:clear:cd *'
 # Ignore duplicates, multiple successive entries
 setopt histignorealldups sharehistory
 
@@ -136,10 +138,10 @@ setopt histignorealldups sharehistory
 autoload -Uz compinit
 compinit
 
-# check the window size after each command and, if necessary,              
-# update the values of LINES and COLUMNS.                                  
-shopt -s checkwinsize                                                                           
-# Color prompt                                                             
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+# shopt -s checkwinsize
+# Color prompt
 force_color_prompt=yes
 
 
@@ -152,20 +154,19 @@ alias hardware='inxi -Fx'
 alias weather='curl http://wttr.in/Seattle'
 alias venv='source ~/venv/bin/activate'
 alias e='emacs -nw $1'
+alias pip="pip3"
 
-# make less more friendly for non-text input files, see lesspipe(1)        
+# make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-## SYNTAX HIGHLIGHTING ##
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ## HELP COMMAND ##
 autoload -U run-help
 autoload run-help-git
 autoload run-help-svn
 autoload run-help-svk
-unalias run-help
-alias help=run-help
+#unalias run-help
+alias zh=run-help
 
 #-------------------- ENVIRONMENT  VARIABLES  --------------------------
 
@@ -201,65 +202,65 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 #-------------------- WELCOME MESSAGE  --------------------------
-# this will display the username, date, time, a calendar, the amount of users, and the up time.                                                      
-clear                                                                      
-# Gotta love ASCII art with figlet                                         
-#figlet "Welcome, " $USER;                                                 
+# this will display the username, date, time, a calendar, the amount of users, and the up time.
+clear
+# Gotta love ASCII art with figlet
+#figlet "Welcome, " $USER;
 
-echo -e "${LIGHTCYAN}"; echo "----------------------------------------------------------------";                                                     
-#echo -ne "${RED}Today is:\t\t${CYAN}" `date`; echo ""                     
+echo -e "${LIGHTCYAN}"; echo "----------------------------------------------------------------";
+#echo -ne "${RED}Today is:\t\t${CYAN}" `date`; echo ""
 if [[ $(date +%p) == 'AM' ]] #%p is either AM or PM called from date
   then echo -ne  "${WHITE}Good morning $USER. \t\t\t\t"  # note echo statements always end with newline char, printf doesn't
-  else echo -ne  "${WHITE}Good afternoon $USER. \t\t\t\t"                  
-fi                                                                         
-echo ""                                                                    
-echo -ne "${RED}Today is:\t\t${CYAN}" `date`; echo ""                      
-echo -e "${RED}Kernel Information: \t${CYAN}" `uname -smr`                 
+  else echo -ne  "${WHITE}Good afternoon $USER. \t\t\t\t"
+fi
+echo ""
+echo -ne "${RED}Today is:\t\t${CYAN}" `date`; echo ""
+echo -e "${RED}Kernel Information: \t${CYAN}" `uname -smr`
 echo -ne "${PURPLE}"; upinfo; echo ""
 echo -e "${GREEN}"; cal -3; echo ""
 echo -e "${LIGHTCYAN}"; echo "----------------------------------------------------------------";
 
 #-------------------- FUNCTIONS  --------------------------
 
-#Display a PDF of a given man page                                    
+#Display a PDF of a given man page
 function pdfman() {
     man -t $@ | pstopdf -i -o /tmp/$1.pdf && open /tmp/$1.pdf
 }
 
-#Extract a zip file, given by argument                           
-extract () {                              
-  if [ -f $1 ] ; then                                     
-    case $1 in                 
-      *.tar.bz2)  tar xjf $1    ;;                   
-      *.tar.gz) tar xzf $1    ;;                   
-      *.bz2)    bunzip2 $1    ;;                     
-      *.rar)    rar x $1    ;;                       
-      *.gz)   gunzip $1   ;;                     
-      *.tar)    tar xf $1   ;;                   
-      *.tbz2)   tar xjf $1    ;;                   
-      *.tgz)    tar xzf $1    ;;                     
-      *.zip)    unzip $1    ;;                    
-      *.Z)    uncompress $1 ;;                     
+#Extract a zip file, given by argument
+extract () {
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)  tar xjf $1    ;;
+      *.tar.gz) tar xzf $1    ;;
+      *.bz2)    bunzip2 $1    ;;
+      *.rar)    rar x $1    ;;
+      *.gz)   gunzip $1   ;;
+      *.tar)    tar xf $1   ;;
+      *.tbz2)   tar xjf $1    ;;
+      *.tgz)    tar xzf $1    ;;
+      *.zip)    unzip $1    ;;
+      *.Z)    uncompress $1 ;;
       *)      echo "'$1' cannot be extracted via extract()" ;;
-    esac                                             
-  else                
-    echo "'$1' is not a valid file"                                               
-  fi                                                 
-} 
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
 
 ## MAKE FILE CONTAINING NAMES OF FUNCTIONS IN ARGUMENT FILE ##
 # Only set up for python right now
-mkhead ()    
+mkhead ()
 {
     if [[ $1 =~ \.py$ ]]; then
         touch "header_${1%.py}.txt";
         echo "//--- Header file created by mkhead() ---//" > "${1%.py}_header.txt";
         cat $1 | grep "def" >> "${1%.py}_header.txt"
     fi
-}            
+}
 
-## GET INFO ABOUT UPTIME ##                                                              
-upinfo ()    
+## GET INFO ABOUT UPTIME ##
+upinfo ()
 {
     echo -ne "Upinfo: \t "; uptime | awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
 }
@@ -267,40 +268,42 @@ upinfo ()
 ## GET IP ##
 function myip()
 {
-    #MY_IP=$(/sbin/ifconfig eth0 | awk "/inet/ { print $2 } " | sed -e s/addr://)        
+    #MY_IP=$(/sbin/ifconfig eth0 | awk "/inet/ { print $2 } " | sed -e s/addr://)
     myip=`elinks -dump http://checkip.dyndns.org:8245/`
     #MY_ISP=$(/sbin/ifconfig eth0 | awk "/P-t-P/ { print $3 } " | sed -e s/P-t-P://)
 
     #echo "IP: ${MY_IP}"
     echo "${myip}"
     #echo "ISP: ${MY_ISP}"
-}                                                                          
-              
+}
 
-## GET HOST INFO ##                                                             
-function ii()                          
+
+## GET HOST INFO ##
+function ii()
 {
     #echo -e "\n${BLUE}You are logged on $HOST"
-    echo -e "\nAdditionnal information:$NC " ; uname -a    
+    echo -e "\nAdditionnal information:$NC " ; uname -a
     echo -e "\n${RED}Users logged on:$NC " ; w -h
     echo -e "\n${RED}Current date :$NC " ; date
     echo -e "\n${RED}Machine stats :$NC " ; uptime
     echo -e "\n${RED}Memory stats :$NC " ; free
     my_ip 2>&. ;
     echo -e "\n${RED}Local IP Address :$NC" ; echo ${MY_IP:."Not connected"}
-    echo -e "\n${RED}ISP Address :$NC" ; echo ${MY_ISP:."Not connected"}   
+    echo -e "\n${RED}ISP Address :$NC" ; echo ${MY_ISP:."Not connected"}
     echo
-} 
-                            
+}
+
 ## ENCRYPT/DECRYPT ##
-                                                                           
+
 # requires gpg
 # the proper way to use these functions is simply to enter "encrypt filename" or "decrypt filename"
 encrypt ()
 {
 		gpg -ac --no-options "$1"
-}                                                                          
-                                                                           
-decrypt () {                
+}
+
+decrypt () {
 		gpg --no-options "$1"
 }
+# Source syntax highlighting package
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
