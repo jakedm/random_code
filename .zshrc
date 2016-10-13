@@ -19,7 +19,7 @@ NC='\e[0m'              # No Color
 
 #-------------------- ZSH DEFAULT RC  --------------------------
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/jake/.oh-my-zsh
+export ZSH=/home/jake/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -38,7 +38,7 @@ ZSH_THEME="duellj"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+ HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -53,7 +53,7 @@ ZSH_THEME="duellj"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
  COMPLETION_WAITING_DOTS="true"
@@ -79,10 +79,10 @@ plugins=(git)
 
 # User configuration
 
- export PATH="/home/jake/CNTK/build/release/bin:/usr/local/mpi/bin:/home/jake/CNTK/build/release/bin:/usr/local/mpi/bin:/home/jake/torch/install/bin:/home/jake/torch/install/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-# export MANPATH="/usr/local/man:$MANPATH"
- export PKG_CONFIG_PATH='/usr/local/lib/pkgconfig:/home/jake/Downloads/glib-2.50.0/'
- export LD_LIBRARY_PATH='/usr/local/lib'
+export PATH="/home/jake/CNTK/build/release/bin:/usr/local/mpi/bin:/home/jake/CNTK/build/release/bin:/usr/local/mpi/bin:/home/jake/torch/install/bin:/home/jake/torch/install/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/jake/.local/bin/"
+#export MANPATH="/usr/local/man:$MANPATH"
+export PKG_CONFIG_PATH='/usr/local/lib/pkgconfig:/home/jake/Downloads/glib-2.50.0/'
+export LD_LIBRARY_PATH='/usr/local/lib'
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -100,16 +100,6 @@ source $ZSH/oh-my-zsh.sh
 
 # ssh
  export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
  export BROWSER="google-chrome"
  export TERM="xterm-256color"
 #-------------------- ZSH SETTINGS --------------------------
@@ -144,23 +134,12 @@ compinit
 # Color prompt
 force_color_prompt=yes
 
-
-## ALIASES ##
-alias r='source ~/.zshrc'
-alias lock='qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock'
-alias logout='qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1'
-alias net='${BROWSER} 2>/dev/null &'
-alias hardware='inxi -Fx'
-alias weather='curl http://wttr.in/Seattle'
-alias venv='source ~/venv/bin/activate'
-alias e='emacs -nw $1'
-alias pip="pip3"
-
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 
-## HELP COMMAND ##
+## ZSH ALIASES ##
+# HELP COMMAND
 autoload -U run-help
 autoload run-help-git
 autoload run-help-svn
@@ -168,6 +147,9 @@ autoload run-help-svk
 #unalias run-help
 alias zh=run-help
 
+# OTHER
+alias r='source ~/.zshrc'
+. ~/.aliases
 #-------------------- ENVIRONMENT  VARIABLES  --------------------------
 
 ## ACML ##
@@ -220,90 +202,5 @@ echo -ne "${PURPLE}"; upinfo; echo ""
 echo -e "${GREEN}"; cal -3; echo ""
 echo -e "${LIGHTCYAN}"; echo "----------------------------------------------------------------";
 
-#-------------------- FUNCTIONS  --------------------------
-
-#Display a PDF of a given man page
-function pdfman() {
-    man -t $@ | pstopdf -i -o /tmp/$1.pdf && open /tmp/$1.pdf
-}
-
-#Extract a zip file, given by argument
-extract () {
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)  tar xjf $1    ;;
-      *.tar.gz) tar xzf $1    ;;
-      *.bz2)    bunzip2 $1    ;;
-      *.rar)    rar x $1    ;;
-      *.gz)   gunzip $1   ;;
-      *.tar)    tar xf $1   ;;
-      *.tbz2)   tar xjf $1    ;;
-      *.tgz)    tar xzf $1    ;;
-      *.zip)    unzip $1    ;;
-      *.Z)    uncompress $1 ;;
-      *)      echo "'$1' cannot be extracted via extract()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
-}
-
-## MAKE FILE CONTAINING NAMES OF FUNCTIONS IN ARGUMENT FILE ##
-# Only set up for python right now
-mkhead ()
-{
-    if [[ $1 =~ \.py$ ]]; then
-        touch "header_${1%.py}.txt";
-        echo "//--- Header file created by mkhead() ---//" > "${1%.py}_header.txt";
-        cat $1 | grep "def" >> "${1%.py}_header.txt"
-    fi
-}
-
-## GET INFO ABOUT UPTIME ##
-upinfo ()
-{
-    echo -ne "Upinfo: \t "; uptime | awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
-}
-
-## GET IP ##
-function myip()
-{
-    #MY_IP=$(/sbin/ifconfig eth0 | awk "/inet/ { print $2 } " | sed -e s/addr://)
-    myip=`elinks -dump http://checkip.dyndns.org:8245/`
-    #MY_ISP=$(/sbin/ifconfig eth0 | awk "/P-t-P/ { print $3 } " | sed -e s/P-t-P://)
-
-    #echo "IP: ${MY_IP}"
-    echo "${myip}"
-    #echo "ISP: ${MY_ISP}"
-}
-
-
-## GET HOST INFO ##
-function ii()
-{
-    #echo -e "\n${BLUE}You are logged on $HOST"
-    echo -e "\nAdditionnal information:$NC " ; uname -a
-    echo -e "\n${RED}Users logged on:$NC " ; w -h
-    echo -e "\n${RED}Current date :$NC " ; date
-    echo -e "\n${RED}Machine stats :$NC " ; uptime
-    echo -e "\n${RED}Memory stats :$NC " ; free
-    my_ip 2>&. ;
-    echo -e "\n${RED}Local IP Address :$NC" ; echo ${MY_IP:."Not connected"}
-    echo -e "\n${RED}ISP Address :$NC" ; echo ${MY_ISP:."Not connected"}
-    echo
-}
-
-## ENCRYPT/DECRYPT ##
-
-# requires gpg
-# the proper way to use these functions is simply to enter "encrypt filename" or "decrypt filename"
-encrypt ()
-{
-		gpg -ac --no-options "$1"
-}
-
-decrypt () {
-		gpg --no-options "$1"
-}
 # Source syntax highlighting package
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
