@@ -1,0 +1,138 @@
+#------------------------------------------////
+#  ALIASES
+#------------------------------------------////
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# enable color support of ls and also add handy aliases
+if [ "$TERM" != "dumb" ]; then
+    eval `dircolors -b`
+    alias ls='ls -hF --color=auto'
+	alias la='ls -halt --color=auto'
+    #alias ls='du -s */* | sort -n'
+    alias dir='ls --color=auto --format=vertical'
+    alias vdir='ls --color=auto --format=long'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+alias work='/home/hutch_research/workspaces/moorhej'
+alias lock='qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock'
+alias logout='qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1'
+alias net='${BROWSER} 2>/dev/null &'
+alias hardware='inxi -Fx'
+alias weather='curl http://wttr.in/Seattle'
+alias venv='source ~/venv/bin/activate'
+alias e='emacs -nw $1'
+alias pip="pip3"
+
+#------------------------------------------////
+# FUNCTIONS:
+#------------------------------------------////
+
+# Make file with names and prototypes of all methods/functions in file
+# Works with:
+#   Python (2 and 3) [Functions/methods only, no object support]
+#   Perl [*.pl and *.pm support]
+mkhead ()
+{
+    if [[ $1 =~ \.py$ ]]; then
+        touch "header_${1%.py}.txt";
+        echo "//--- Header file created by mkhead() ---//" > "${1%.py}_header.txt";
+        cat $1 | grep "def" >> "${1%.py}_header.txt"
+	elif [[ $1 =~ \.pl$ ]]; then
+        touch "header_${1%.pl}.txt";
+        echo "//--- Header file created by mkhead() ---//" > "${1%.py}_header.txt";
+        cat $1 | grep "sub" >> "${1%.pl}_header.txt"
+	elif [[ $1 =~ \.pm$ ]]; then
+		touch "header_${1%.pm}.txt";
+        echo "//--- Header file created by mkhead() ---//" > "${1%.py}_header.txt";
+        cat $1 | grep "sub" >> "${1%.pm}_header.txt"
+    fi
+}
+
+upinfo ()
+{
+    echo -ne "Upinfo: \t "; uptime | awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
+}
+
+function my-ip() # get IP adresses
+{
+    MY_IP=$(/sbin/ifconfig eth0 | awk "/inet/ { print $2 } " | sed -e s/addr://)
+    MY_ISP=$(/sbin/ifconfig eth0 | awk "/P-t-P/ { print $3 } " | sed -e s/P-t-P://)
+}
+
+function ii() # get current host related info
+{
+    #echo -e "\n${BLUE}You are logged on $HOST"
+    echo -e "\nAdditionnal information:$NC " ; uname -a
+    echo -e "\n${RED}Users logged on:$NC " ; w -h
+    echo -e "\n${RED}Current date :$NC " ; date
+    echo -e "\n${RED}Machine stats :$NC " ; uptime
+    echo -e "\n${RED}Memory stats :$NC " ; free
+    my_ip 2>&. ;
+    echo -e "\n${RED}Local IP Address :$NC" ; echo ${MY_IP:."Not connected"}
+    echo -e "\n${RED}ISP Address :$NC" ; echo ${MY_ISP:."Not connected"}
+    echo
+}
+
+# Get weather (replace the 71822 in the url with your own zipcode, call it by typing weather)
+weather ()
+{
+    declare -a WEATHERARRAY
+    WEATHERARRAY=( `elinks -dump "http://www.google.com/search?hl=en&lr=&client=firefox-a&rls=org.mozilla%3Aen-US%3Aofficial&q=weather+98229&btnG=Search" | grep -A 5 -m 1 "Weather for" | grep -v "Add to "`)
+    echo ${WEATHERARRAY[@]}
+}
+
+
+function true-ip {
+    myip=`elinks -dump http://checkip.dyndns.org:8245/`
+    echo "${myip}"
+}
+
+#Display a PDF of a given man page
+function pdfman() {
+    man -t $@ | pstopdf -i -o /tmp/$1.pdf && open /tmp/$1.pdf
+}
+
+#Extract a zip file, given by argument
+extract () {
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)  tar xjf $1    ;;
+      *.tar.gz) tar xzf $1    ;;
+      *.bz2)    bunzip2 $1    ;;
+      *.rar)    rar x $1    ;;
+      *.gz)   gunzip $1   ;;
+      *.tar)    tar xf $1   ;;
+      *.tbz2)   tar xjf $1    ;;
+      *.tgz)    tar xzf $1    ;;
+      *.zip)    unzip $1    ;;
+      *.Z)    uncompress $1 ;;
+      *)      echo "'$1' cannot be extracted via extract()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+#------------------------------------------////
+# Encryption/Decryption:
+
+# requires gpg
+# the proper way to use these functions is simply to enter "encrypt filename" or "decrypt filename"
+encrypt ()
+{
+gpg -ac --no-options "$1"
+}
+
+decrypt ()
+{
+gpg --no-options "$1"
+}
