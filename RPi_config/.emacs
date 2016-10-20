@@ -62,8 +62,8 @@
 ;; Iffy packages
 
 ;; Projectiles
-(require 'projectile)
-(projectile-global-mode)
+;;(require 'projectile)
+;;(projectile-global-mode)
 
 ;; Company
 (require 'company)
