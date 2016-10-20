@@ -23,9 +23,9 @@ USER_APPS="tmux htop emacs codeblocks codeblocks-contrib filezilla"
 
 # Updating RPi system
 printf "Updates and Upgrades.\n"
-sudo apt-get update -y
-sudo apt-get upgrade -y
-sudo rpi-update -y
+sudo apt-get update
+sudo apt-get upgrade
+sudo rpi-update
 printf "\n\n\n"
 
 # SHOULD REBOOT HERE
@@ -33,31 +33,40 @@ printf "\n\n\n"
 printf "Installing Apache packages...\n"
 sudo apt-get install -y $APACHE
 printf "Done.\n"
-printf "\n\n"
+sleep 3
+clear
 
 printf "Installing MySQL packages...\n"
 sudo apt-get install -y $MYSQL
 printf "Done.\n"
-printf "\n\n"
+sleep 3
+clear
+
 
 printf "Installing PHP packages...\n"
 sudo apt-get install -y $PHP
 printf "Done.\n"
-printf "\n\n"
+sleep 3
+clear
+
 
 printf "Installing misc. packages...\n"
 sudo apt-get install -y $OTHER
 printf "Done.\n"
-printf "\n\n"
+sleep 3
+clear
 
 printf "Editing apache.conf file.\n"
 echo "Include /etc/phpmyadmin/apache.conf" | sudo tee -a /etc/apache2/apache2.conf > /dev/null
 printf "\n\n"
+sleep 3
+clear
 
 printf "Installing user applications...\n"
 sudo apt-get install -y $USER_APPS
 printf "Done.\n"
-printf "\n\n"
+sleep 3
+clear
 
 # Move config files to correct location
 printf "Moving conf files from local github repo to home dir.\n"
@@ -68,7 +77,7 @@ mv ./.bashrc ~
 
 sudo apt-get clean
 
-printf "Shutdown to occur in 5 seconds."
-sleep 5
-sudo shutdown 0
+printf "Shutdown must occur now. Exiting."
+
+
 
