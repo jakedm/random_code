@@ -11,17 +11,17 @@
     ((c-mode . "")
      (java-mode . "java")
      (awk-mode . "awk")
-          (other . "gnu"))))   
- '(custom-enabled-themes (quote (manoj-dark)))
+	 (other . "gnu"))))
+ '(custom-enabled-themes (quote (ahungry)))
  '(custom-safe-themes
    (quote
     ("8a5ac83a3807cbd06ba507d0756d0c926fd488850faabc23a271eeb1e02ca678" default)))
  '(inhibit-startup-screen t)
  '(red "#ffffff")
  '(s-set-offset (quote +))
- '(standard-indent 2)
+ '(standard-indent 4)
  '(tab-stop-list (quote (2 4 6 8 10 12 14 16 18 20 22 24 26 28 30)))
-  '(tab-width 2))
+  '(tab-width 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -39,21 +39,49 @@
 ;; For important compatibility libraries like cl-lib
 ;;(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
-(elpy-enable)   
-
 (add-to-list 'load-path "~/.emacs.d/plugins/")
-(require 'dirtree)
-
-
+(add-to-list 'load-path "~/.emacs.d/elpa/")
+(setq custom-safe-themes t)
 ;highlight parentheses when the cursor is next to them
 (require 'paren)
-(show-paren-mode 1)  
+(show-paren-mode 1)
 
 ;; Ido mode
 (require 'ido)
 (ido-mode 1)
 
-(load-theme 'ahungry t)
+;; C editing stuff
+;;(windmove-default-keybindings)
+
+;;(require 'cc-mode)
+;;(require 'semantic)
+;;(global-semanticdb-minor-mode 1)
+;;(global-semantic-idle-scheduler-mode 1)
+;;(semantic-mode 1)
+
+;; Iffy packages
+
+;; Projectiles
+;;(require 'projectile)
+;;(projectile-global-mode)
+
+;; Company
+;;(require 'company)
+;;(add-hook 'after-init-hook 'global-company-mode)
+;;(delete 'company-semantic company-backends)
+;;(define-key c-mode-map  [(tab)] 'company-complete)
+;;(define-key c++-mode-map  [(tab)] 'company-complete)
+;; (define-key c-mode-map  [(control tab)] 'company-complete)
+;; (define-key c++-mode-map  [(control tab)] 'company-complete)
+
+;; company-c-headers
+;; (add-to-list 'company-backends 'company-c-headers)
+
+;; Set Theme
+(load-theme 'ahungry)
+
+;; Turn on linum-mode by default
+(add-hook 'prog-mode-hook 'linum-mode)
 
 (setq auto-mode-alist
       (cons
@@ -78,11 +106,42 @@
 	    ")%]--"
 	    "Line %l--"
 	    '(-3 . "%P")
-	    "-%-")) 
+	    "-%-"))
+
+;; Build Cool directory tree
+(require 'dirtree)
+(dirtree-mode)
 
 ;; Major modes ;;
+;;(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;;(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+;;(add-to-list 'auto-mode-alist '("\\.c'" . cc-mode))
+;;(add-to-list 'auto-mode-alist '("\\.h\\'" . cc-mode))
+;;(add-to-list 'auto-mode-alist '("\\.cpp'" . cc-mode))
+;; Set C default style (Also "gnu", "bsd", and "java"
+(setq c-default-style "linux")
 
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-(defun turn-on-anaconda () (anaconda-mode 1))
-(add-hook 'python-mode-hook 'turn-on-anaconda)
+;; show unncessary whitespace that can mess up your diff
+(add-hook 'prog-mode-hook (lambda () (interactive) (setq show-trailing-whitespace 1)))
+
+;; Delete trailing white space before closing
+(add-hook 'before-save-hook
+		  'delete-trailing-whitespace)
+
+;; hs-minor-mode for folding source code
+(add-hook 'c-mode-common-hook 'hs-minor-mode)
+
+;; Compilation
+(global-set-key (kbd "<f5>") (lambda ()
+                               (interactive)
+                               (setq-local compilation-read-command nil)
+                               (call-interactively 'compile)))
+
+;; setup GDB
+(setq
+ ;; use gdb-many-windows by default
+ gdb-many-windows t
+
+ ;; Non-nil means display source file containing the main routine at startup
+ gdb-show-main t
+)
