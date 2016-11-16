@@ -36,14 +36,23 @@
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
 ;;(when (< emacs-major-version 24)
-;; For important compatibility libraries like cl-lib
+;;;; For important compatibility libraries like cl-lib
 ;;(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-(package-initialize)
-(elpy-enable)   
+(package-initialize)  
+
+;; Set Default Mode for All Files
+(setq-default major-mode 'text-mode)
 
 (add-to-list 'load-path "~/.emacs.d/plugins/")
 (require 'dirtree)
 
+;; Linum Mode setup
+(global-linum-mode 1)
+(setq linum-format "%3d \u2502")
+
+(require 'php-mode)
+(add-hook 'php-mode-improved-hook
+					'(lambda () (define-abbrev php-mode-abbrev-table "ex" "extends")))
 
 ;highlight parentheses when the cursor is next to them
 (require 'paren)
@@ -53,12 +62,9 @@
 (require 'ido)
 (ido-mode 1)
 
-(load-theme 'ahungry t)
+;;(require 'simple-call-tree)
 
-(setq auto-mode-alist
-      (cons
-       '("\\.m$" . octave-mode)
-       auto-mode-alist))
+;;(load-theme 'ahungry t)
 
 (setq default-mode-line-format
       (list ""
@@ -80,9 +86,23 @@
 	    '(-3 . "%P")
 	    "-%-")) 
 
+
 ;; Major modes ;;
 
+(setq auto-mode-alist
+      (cons
+       '("\\.m$" . octave-mode)
+       auto-mode-alist))
+
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
+;; Python Mode Setup
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (defun turn-on-anaconda () (anaconda-mode 1))
+(defun enable-elpy ()  (elpy-enable))
 (add-hook 'python-mode-hook 'turn-on-anaconda)
+(add-hook 'python-mode-hook 'enable-elpy)
+
+;; PHP mode
+(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
+
