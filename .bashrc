@@ -53,24 +53,38 @@ PS1='\[\033[01;34m\]\u\[\033[01;34m\]@\[\033[01;31m\]\h\[\033[00;34m\]{\[\033[01
 #------WELCOME MESSAGE---------------------
 # customize this first message with a message of your choice.
 # this will display the username, date, time, a calendar, the amount of users, and the up time.
-clear
-# Gotta love ASCII art with figlet
-#figlet "Welcome, " $USER;
-#echo -e "${LIGHTBLUE}"; echo "Welcome, " $USER;
-#for i in `seq 1 15` ; do spin; done ;
-#echo -ne "${WHITE} Welcome, " $USER;
-#for i in `seq 1 15` ; do spin; done ;echo "";
-echo -e "${LIGHTCYAN}"; echo "----------------------------------------------------------------";
-#echo -ne "${RED}Today is:\t\t${CYAN}" `date`; echo ""
-if [[ $(date +%p) == 'AM' ]]                   #%p is either AM or PM called from date
-  then echo -ne  "${WHITE}Good morning $USER. \t\t\t\t"  # note echo statements alway end with newline char, printf doesn't
-  else echo -ne  "${WHITE}Good afternoon $USER. \t\t\t\t"
+welcome ()
+{
+		clear
+		# Gotta love ASCII art with figlet
+		#figlet "Welcome, " $USER;
+		#echo -e "${LIGHTBLUE}"; echo "Welcome, " $USER;
+		#for i in `seq 1 15` ; do spin; done ;
+		#echo -ne "${WHITE} Welcome, " $USER;
+		#for i in `seq 1 15` ; do spin; done ;echo "";
+		echo -e "${LIGHTCYAN}"; echo "----------------------------------------------------------------";
+		#echo -ne "${RED}Today is:\t\t${CYAN}" `date`; echo ""
+		if [[ $(date +%p) == 'AM' ]]                   #%p is either AM or PM called from date
+		then echo -ne  "${WHITE}Good morning $USER. \t\t\t\t"  # note echo statements alway end with newline char, printf doesn't
+		else echo -ne  "${WHITE}Good afternoon $USER. \t\t\t\t"
+		fi
+		echo ""
+		echo -ne "${RED}Today is:\t\t${CYAN}" `date`; echo ""
+		echo -e "${RED}Kernel Information: \t${CYAN}" `uname -smr`
+		echo -ne "${PURPLE}"; upinfo; echo ""
+		#echo -ne "${CYAN}"; uptime; echo ""
+		echo -e "${GREEN}"; cal -3; echo ""
+		#echo -e "${RED}"; weather; echo ""
+		echo -e "${LIGHTCYAN}"; echo "----------------------------------------------------------------";
+}
+
+# Check to see if prompt is interactive; if not, don't print welcome message.
+INTERACTIVE=0
+case $- in
+		*i*) INTERACTIVE=1;;
+		*) INTERACTIVE=0;;
+esac
+
+if [[ $INTERACTIVE -eq 1 ]]; then
+		welcome
 fi
-echo ""
-echo -ne "${RED}Today is:\t\t${CYAN}" `date`; echo ""
-echo -e "${RED}Kernel Information: \t${CYAN}" `uname -smr`
-echo -ne "${PURPLE}"; upinfo; echo ""
-#echo -ne "${CYAN}"; uptime; echo ""
-echo -e "${GREEN}"; cal -3; echo ""
-#echo -e "${RED}"; weather; echo ""
-echo -e "${LIGHTCYAN}"; echo "----------------------------------------------------------------";
