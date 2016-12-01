@@ -83,7 +83,7 @@ function ii() # get current host related info
 }
 
 # Get weather (replace the 71822 in the url with your own zipcode, call it by typing weather)
-weather ()
+function weather ()
 {
     declare -a WEATHERARRAY
     WEATHERARRAY=( `elinks -dump "http://www.google.com/search?hl=en&lr=&client=firefox-a&rls=org.mozilla%3Aen-US%3Aofficial&q=weather+98229&btnG=Search" | grep -A 5 -m 1 "Weather for" | grep -v "Add to "`)
