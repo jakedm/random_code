@@ -136,3 +136,22 @@ decrypt ()
 {
 gpg --no-options "$1"
 }
+
+#------------------------------------------////
+# Up Function:
+
+# given a number, it will go up as many dirs as possible
+up(){
+		local d=""
+		limit=$1
+		for ((i=1 ; i <= limit ; i++))
+		do
+				d=$d/..
+		done
+		d=$(echo $d | sed 's/^\///')
+		if [ -z "$d" ]; then
+				d=..
+		fi
+		cd $d
+}
+
