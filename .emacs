@@ -12,7 +12,7 @@
      (java-mode . "java")
      (awk-mode . "awk")
           (other . "gnu"))))   
- '(custom-enabled-themes (quote (manoj-dark)))
+ '(custom-enabled-themes (quote (ahungry-theme)))
  '(custom-safe-themes
    (quote
     ("8a5ac83a3807cbd06ba507d0756d0c926fd488850faabc23a271eeb1e02ca678" default)))
@@ -27,8 +27,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white"
-	        :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
+ ;;'(default ((t (:inherit nil :stipple nil :background "black" :foreground "white"
+ ;;        :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
+ )
 
 
 ;; Require MELPA
@@ -62,9 +63,14 @@
 (require 'ido)
 (ido-mode 1)
 
-;;(require 'simple-call-tree)
+;; Load ahungry theme
+(add-to-list 'custom-theme-load-path "~/.emacs.d/color-theme-ahungry/")
 
-;;(load-theme 'ahungry t)
+;; Only set this if you wish to retain your own font settings
+;; otherwise, leave it out.
+(setq ahungry-theme-font-settings nil)
+
+(load-theme 'ahungry t)
 
 (setq default-mode-line-format
       (list ""

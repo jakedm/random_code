@@ -17,7 +17,7 @@ YELLOW='\e[1;33m'
 WHITE='\e[1;37m'
 NC='\e[0m'              # No Color
 #-------------------- BASH SETTINGS --------------------------
-export TERM=xterm
+export TERM=xterm-256color
 export BROWSER=/usr/bin/google-chrome
 #export BROWSER=/usr/bin/firefox
 export EDITOR="emacs"
