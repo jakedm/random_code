@@ -47,17 +47,34 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/")
 (require 'dirtree)
 
-;; Linum Mode setup
-(global-linum-mode 1)
-(setq linum-format "%3d \u2502")
+
 
 (require 'php-mode)
 (add-hook 'php-mode-improved-hook
-					'(lambda () (define-abbrev php-mode-abbrev-table "ex" "extends")))
+          '(lambda () (define-abbrev php-mode-abbrev-table "ex" "extends")))
 
 ;highlight parentheses when the cursor is next to them
 (require 'paren)
 (show-paren-mode 1)  
+
+;; Linum Mode setup
+(global-linum-mode 1)
+(setq linum-format "%3d \u2502")
+
+;  Kill whitespace function
+(defun kill-whitespace ()
+  "Kill the whitespace between two non-whitespace characters"
+  (interactive "*")
+  (save-excursion
+    (save-restriction
+      (save-match-data
+        (progn
+          (re-search-backward "[^ \t\r\n]" nil t)
+          (re-search-forward "[ \t\r\n]+" nil t)
+                            (replace-match "" nil nil))))))
+
+; Kill whitespace on save
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Ido mode
 (require 'ido)
@@ -71,6 +88,7 @@
 (setq ahungry-theme-font-settings nil)
 
 (load-theme 'ahungry t)
+
 
 (setq default-mode-line-format
       (list ""
