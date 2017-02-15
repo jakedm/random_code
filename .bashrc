@@ -59,8 +59,15 @@ alias r='source ~/.bashrc'
 #PS1='\[\e[0;36m\]┌─\[\e[1;37m\][\u@\h]\[\e[0m\]\[\e[0;36m\]─\[\e[0;93m\](\w)\n\[\e[0;36m\]└─\[\e[1;32m\][\A]\[\e[0m\]\$ '
 
 ## Multiline prompt (same as above) but hostname and time changes based on hostname.
+#PS1='\[\e[1;35m\]┌─\[\e[${hostnamecolor}m\]\]\u@\H \[\e[1;37m\][\A]\n\[\e[1;35m\]└─\[\e[1;36m\]{\w}\[\e[1;37m\]-\[\e[1;36m\]\\$ \[$(tput sgr0)\]'
+
+## Other multiline prompt with color changed based on hostname.
 hostnamecolor=$(hostname | od | tr ' ' '\n' | awk '{total = total + $1}END{print 30 + (total % 6)}')
-PS1='\[\e[0;36m\]┌─\[\e[1;37m\][\u@\[\e[${hostnamecolor}m\]\]\h\[\e[1;37m\]]\[\e[0m\]\[\e[0;36m\]─\[\e[0;93m\](\w)\n\[\e[0;36m\]└─\[\e[${hostnamecolor}m\]\][\A]\[\e[0m\]\$ '
+PS1='\[\e[0;36m\]┌─\[\e[1;37m\][\u@\[\e[${hostnamecolor}m\]\h\[\e[1;37m\]]\[\e[0m\]\[\e[0;36m\]─\[\e[0;93m\](\w)\n\[\e[0;36m\]└─\[\e[${hostnamecolor}m\][\A]\[\e[0m\]\$ '
+
+
+
+
 
 #------------------------------------------
 #------WELCOME MESSAGE---------------------
