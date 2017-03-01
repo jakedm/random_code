@@ -1,14 +1,13 @@
+########################################################
+# List of necessary packages just for bash functions:
+#   mdfinder.app
+#   elinks
+#
+########################################################
+
 #------------------------------------------////
 #  ALIASES
 #------------------------------------------////
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
@@ -64,21 +63,25 @@ upinfo ()
 
 function my-ip() # get IP adresses
 {
-    MY_IP=$(/sbin/ifconfig eth0 | awk "/inet/ { print $2 } " | sed -e s/addr://)
-    MY_ISP=$(/sbin/ifconfig eth0 | awk "/P-t-P/ { print $3 } " | sed -e s/P-t-P://)
+    MY_IP=$(ip -o address | awk '!/inet6/' | awk '!/127.0.0.1/ { print $4; } ' | awk -F '/' '{print $1;}')
+    WAN_IP=$(elinks -dump http://checkip.dyndns.org:8245/)
+    #MY_IP=$(/sbin/ifconfig eth0 | awk "/inet/ { print $2 } " | sed -e s/addr://)
+    #MY_ISP=$(/sbin/ifconfig eth0 | awk "/P-t-P/ { print $3 } " | sed -e s/P-t-P://)
 }
 
 function ii() # get current host related info
 {
-    #echo -e "\n${BLUE}You are logged on $HOST"
-    echo -e "\nAdditionnal information:$NC " ; uname -a
+    MY_IP=$(ip -o address | awk '!/inet6/' | awk '!/127.0.0.1/ { print $4; } ' | awk -F '/' '{print $1;}')
+    WAN_IP=$(elinks -dump http://checkip.dyndns.org:8245/ | awk '{print $NF}')
+
+    echo -e "\n${BLUE}You are logged on $HOST"
+    echo -e "\nAdditional information:$NC " ; uname -a
     echo -e "\n${RED}Users logged on:$NC " ; w -h
     echo -e "\n${RED}Current date :$NC " ; date
     echo -e "\n${RED}Machine stats :$NC " ; uptime
     echo -e "\n${RED}Memory stats :$NC " ; free
-    my_ip 2>&. ;
-    echo -e "\n${RED}Local IP Address :$NC" ; echo ${MY_IP:."Not connected"}
-    echo -e "\n${RED}ISP Address :$NC" ; echo ${MY_ISP:."Not connected"}
+    echo -e "\n${RED}LAN IP :$NC" ; echo "${MY_IP}"
+    echo -e "\n${RED}WAN IP :$NC" ; echo "${WAN_IP}"
     echo
 }
 
@@ -91,9 +94,9 @@ function weather ()
 }
 
 
-function true-ip {
-    myip=`elinks -dump http://checkip.dyndns.org:8245/`
-    echo "${myip}"
+function true-ip() {
+    WAN_IP=`elinks -dump http://checkip.dyndns.org:8245/`
+    echo "${WAN_IP}"
 }
 
 #Display a PDF of a given man page
@@ -132,9 +135,8 @@ encrypt ()
 gpg -ac --no-options "$1"
 }
 
-decrypt ()
-{
-gpg --no-options "$1"
+decrypt (){
+   gpg --no-options "$1"
 }
 
 #------------------------------------------////
@@ -142,16 +144,60 @@ gpg --no-options "$1"
 
 # given a number, it will go up as many dirs as possible
 up(){
-		local d=""
-		limit=$1
-		for ((i=1 ; i <= limit ; i++))
-		do
-				d=$d/..
-		done
-		d=$(echo $d | sed 's/^\///')
-		if [ -z "$d" ]; then
-				d=..
-		fi
-		cd $d
+	local d=""
+	limit=$1
+	for ((i=1 ; i <= limit ; i++))
+	do
+                d=$d/..
+	done
+	d=$(echo $d | sed 's/^\///')
+	if [ -z "$d" ]; then
+	   d=..
+	fi
+	cd $d
 }
 
+#------------------------------------------////
+# Copy and Go to Dir Function:
+
+# Copy a file and go to directory
+cpg (){
+  if [ -d "$2" ];then
+     cp $1 $2 && cd $2
+  else
+     cp $1 $2
+  fi
+}
+
+#------------------------------------------////
+# Find and Grep function:
+
+# Look for a string in files;
+#   Works recursively from current directory
+findgrep () {
+    if [ $# -eq 0 ]; then
+        echo "findgrep: No arguments entered."; return 1
+    else
+        # "{.[a-zA-Z],}*" instead of "." makes the output cleaner
+        find {.[a-zA-Z],}* -type f | xargs grep -n $* /dev/null 2> /dev/null
+
+    fi
+}
+
+#------------------------------------------////
+# Scour Function:
+
+
+# Look for specific file on system, starting at /.
+function scour() {
+    find / -iname '*'$1'*';
+}
+
+
+#------------------------------------------////
+# List Apps Function:
+
+# list_all_apps: list all applications on the system
+list_all_apps() {
+    mdfind 'kMDItemContentTypeTree == "com.apple.application"c' ;
+}
