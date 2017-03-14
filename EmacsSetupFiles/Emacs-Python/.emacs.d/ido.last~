@@ -1,0 +1,73 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/" . "pi/")
+ ("/" . "home/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/pi/"
+ "/home/pi/Scripts/"
+ "/home/pi/watchdog/"
+ "/home/boca/.ssh/"
+ "/etc/ssh/"
+ "/home/pi/Projects/TunnelTest/"
+ "/etc/"
+ "/home/jake/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ ".emacs"
+ "updateSites.py"
+ "ORIG_dumpyiicomm.sh"
+ "authorized_keys.alt"
+ "sshd_config"
+ "main.cpp"
+ ".aliases"
+ "bash.bashrc"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/pi/" (22571 45003 410708 277000) ".emacs" ".themes/" ".rnd" "PortListing.txt" ".other_aliases~" ".aliases~" ".emacs~" "20160630Anedot.pdf" ".elinks/" ".bash_aliases" ".config/" "python_games/" "Music/" ".mozilla/" "netstatus.txt" "Projects/" ".nano_history" ".other_aliases" "NetworkMon/" ".wireshark/" "Public/" "connectall.sh" "default_rules.v4" ".bashrc" "Download" "dump.txt" ".dmrc" "dump-captures/" ".xsession-errors" ".python_history" ".tmux.conf" "ProcessTunnels/" ".thumbnails/" ".links2/" ".gconf/" "simple-tree.txt" "backups/" "test.sh" ".FormScanner/" "ftp/" "Temp/" "temp.txt" ".lesshst" ".Xauthority" "../" ".gnome2/" ".gstreamer-0.10/" ".gnupg/" ".gtkrc-2.0" "Desktop/" ".selected_editor" "html.tar.gz" "NEW_IMAGE_SETUP_NOTES.txt" ".eclipse/" "Documents/" "2016-08-04-120329_1392x868_scrot.png" ".dbus/" ".ssh/" ".vnc/" "fromboca2/" ".asoundrc" "2016-07-08-120708_1392x868_scrot.png" "capturenet.sh" "test.sh~" ".swt/" "Videos/" "default-ssl.conf" "connectboca.sh" ".profile" "fromnorth/" "nettest.txt" ".oracle_jre_usage/" "err.txt" ".aliases" ".gnome2_private/" "Downloads/" ".java/" "fromboca/" "connectall.sh~" ".bash_logout" ".claws-mail/" ".xsessionrc" "router.txt" ".WolframEngine/" ".xsession-errors.old" ".codeblocks/" ".viminfo" "Templates/" ".bash_history" "Scripts/" "sites-available/" ".Wolfram Research/" "watchdog/" ".pip/" ".local/" "Pictures/" "./" "2016-08-04-120330_1392x868_scrot.png" ".cache/" ".emacs.d/")
+
+ ("/home/jake/" (22561 1439 537797 787000) ".emacs" ".bashrc~" ".config/" "KNOWN_ISSUES.txt~" "Public/" ".bashrc" ".tmux.conf" "../" "Documents/" ".ssh/" ".profile" ".aliases" "Downloads/" ".bash_logout" ".bash_history" "KNOWN_ISSUES.txt" "./" ".emacs.d/")
+
+ ("/etc/" (22564 43013 319596 218000) "fstab" "magic.mime" "python/" "opensc/" "bindresvport.blacklist" "shadow-" ".pwd.lock" "rc2.d/" "bonobo-activation/" "ucf.conf" "bash_completion" "xml/" "ca-certificates/" "insserv/" "insserv.conf.d/" "mailcap.order" "rc3.d/" "python3/" "profile.d/" "python3.4/" "security/" "netconfig" "ld.so.conf.d/" "newt/" "dhcpcd.conf" "nanorc" "inetd.conf" "debconf.conf" "libpaper.d/" "minicom/" "python2.7/" "rsyslog.conf" "passwd-" "collectd/" "sensors.d/" "dhcp3/" "esound/" "subgid-" "wireshark/" "gconf/" "dhcp/" "sensors3.conf" "eclipse.ini" "gnome-vfs-mime-magic" "group" ".fstab" "gdb/" "gss/" "request-key.d/" "cron.monthly/" "alternatives/" "ca-certificates.conf" "resolv.conf" "triggerhappy/" "xdg/" "gshadow" "rc.local" "at-spi2/" "ld.so.cache" "motd" "lshell.conf~" "cron.hourly/" "ppp/" "subuid" "rc1.d/" "protocols" "rc5.d/" "modules-load.d/" "selinux/" "pam.d/" "default/" "inputrc" "mailcap" "hosts" "console-setup/" "hdparm.conf" "locale.alias" "dbus-1/" "ssh/" "networks" "sound/" "iptables/" "network/" "logrotate.conf" "fuse.conf" "cron.weekly/" "ftpusers" "calendar/" "java-7-openjdk/" "rcS.d/" "snmp/" "lshell.conf" "emacs24/" "login.defs" "fb.modes" "sudoers" "hostname" "issue.net" "cron.daily/" "fonts/" "modprobe.d/" "gufw/" "apache2/" "gtk-3.0/" "group-" "terminfo/" "RTIMULib.ini" "machine-id" "shadow" "hosts.allow" "debian_version" "ghostscript/" "kbd/" "mke2fs.conf" "dictionaries-common/" "localtime" "os-release" "openal/" "securetty" "perl/" "emacs/" "locale.gen" "openvpn/" "resolvconf.conf" "PackageKit/" "php5/" "hosts.deny" "services" "rsyslog.d/" "idmapd.conf" "ntp.conf" "vim/" "deluser.conf" "apm/" "modules" "geoclue/" "subuid-" "gtk-2.0/" "skel/" "logrotate.d/" "iproute2/" "udisks2/" "gamin/" "vsftpd.conf" "xpdf/" "adduser.conf" "wgetrc" "bash_completion.d/" "groff/" "rpc" "gnome/" "lightdm/" "ufw/" "issue" "crontab" "apt/" "libnl-3/" "ldap/" "logcheck/" "pam.conf" "udev/" "cron.d/" "polkit-1/" "mtab" "opt/" "papersize" "passwd" "passwd~" "jailkit/" "mysql/" "avahi/" "ImageMagick-6/" "timezone" "vdpau_wrapper.cfg" "wpa_supplicant/" "dhcpcd.duid" "owfs.conf" "gshadow-" "mime.types" "rc6.d/" "dphys-swapfile" "ifplugd/" "plymouth/" "apparmor.d/" "ssl/" "rc4.d/" "elinks/" "nsswitch.conf" "rmt" "dillo/" ".java/" "bash.bashrc~" "menu-methods/" "usb_modeswitch.conf" "kernel/" "staff-group-for-usr-local" "dpkg/" "timidity/" "pulse/" "X11/" "tmpfiles.d/" "sudoers.d/" "firefox-esr/" "ld.so.conf" "magic" "smi.conf" "init.d/" "sysctl.d/" "lighttpd/" "wildmidi/" "drirc" "initramfs-tools/" "init/" "resolvconf/" "sysctl.conf" "samba/" "rpi-issue" "fake-hwclock.data" "libreoffice/" "environment" "bash.bashrc" "rc0.d/" "gnome-vfs-2.0/" "libaudit.conf" "shells" "binfmt.d/" "profile" "manpath.config" "ld.so.preload" "lvm/" "bluetooth/" "systemd/" "gai.conf" "sgml/" "subgid" "host.conf" "insserv.conf" "../" "./")
+
+ ("/etc/ssh/" (22561 64623 575586 454000) "ssh_config" "ssh_host_ed25519_key" "ssh_host_dsa_key" "sshd_config" "sshd_config~" "../" "ssh_host_ed25519_key.pub" "ssh_host_dsa_key.pub" "ssh_host_rsa_key.pub" "moduli" "ssh_config~" "ssh_host_ecdsa_key" "ssh_host_rsa_key" "./" "ssh_host_ecdsa_key.pub")
+
+ ("/home/boca/.ssh/" (22555 30114 830030 652000) "2223key" "boca_rsa.pub" "../" "README" "id_rsa.pub" "authorized_keys.save" "authorized_keys" "README~" "id_rsa" "authorized_keys.bu" "known_hosts" "./" ".authorized_keys" "id_001.pub")
+
+ ("/home/pi/Scripts/" (22564 45360 27287 200000) "sendToAll.sh" "../" "./")
+
+ ("/home/pi/watchdog/" (22564 42656 229925 971000) "rw_r01.txt" "memstats.txt" "ORIG_dumpyiicomm.sh" "test.sh" "../" "dumpyiicomm.sh" "memdata.sh" "watchdogtest.sh" "dumpyiicomm.sh~" "./")
+
+ ("/home/" (22547 49627 949712 550000) "pi/" "jake/" "../" "alpha/" "boca/" "./")
+
+ ("/home/boca/watchdog/" (22406 37888 702679 32000) "test.sh" "../" "./")
+
+ ("/home/boca/" (22564 43023 879586 476000) ".bashrc~" ".lhistory" "sites/" "transfer/" ".bashrc" "newif_rsa.pub" "ftp/" "temp.txt" ".lesshst" ".Xauthority" "../" "uploads/" ".ssh/" "bocadata/" ".profile" "dumpyiicomm.sh" "temp_rsa.pub" ".bash_logout" "TT.tar.gz" ".bash_history" "watchdog/" "./" ".emacs.d/")
+
+ ("/var/" (22354 28156 698905 314000) "www/" "spool/" "tmp/" "lock/" "run/" "swap" "backups/" "../" "opt/" "agentx/" "log/" "lib/" "local/" "./" "cache/" "mail/")
+
+ ("/var/www/" (22354 28156 698905 314000) "html/" "../" "./")
+
+ ("/var/www/html/" (22545 5330 109135 948000) "index.php" "ptrw/" "pasco2016/" "../" "pages.txt" "images/" "eng005/" "./")
+
+ ("/home/pi/Projects/TunnelTest/" (22418 36290 608323 446000) "include/" "obj/" "TunnelTest.depend" "TunnelTest.cbp" "main.cpp" "temp.txt" "TunnelTest.layout" "../" "err.txt" "src/" "bin/" "./")
+
+ ("/home/pi/Projects/TunnelTest/src/" (22368 34029 386107 330000) "SocketList.cpp" "../" "SocketTest.cpp" "./")
+
+ ("/home/jake/NNs/" (22328 44893 566384 276000) "ML_final_prog/" "../" "./")
+
+ ("/home/jake/NNs/ML_final_prog/" (22328 44947 80249 789000) "../" "cs497Eproj/" "./")
+
+ ("/home/jake/NNs/ML_final_prog/cs497Eproj/" (22328 47230 327607 129000) ".git/" ".#ResNet.py" "proj_dataloader.py" "../" "proj_data/" "ResNet.py" "#ResNet.py#" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

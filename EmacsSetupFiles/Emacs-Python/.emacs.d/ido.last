@@ -1,0 +1,107 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/jake/SafeEmacs/.emacs.d/" . "settings/")
+ ("/home/jake/Data/NDFD/" . "Scripts/")
+ ("/home/jake/Data/" . "NDFD/")
+ ("/home/" . "pi/")
+ ("/" . "home/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/jake/SafeEmacs/.emacs.d/settings/"
+ "/home/jake/Data/NDFD/Scripts/"
+ "/home/jake/Work/CloudPyTest/"
+ "/home/jake/Data/NDFD/Scripts/getdata_GUI/"
+ "/home/jake/Data/NDFD/Scripts/mysql-translate/"
+ "/home/jake/Work/"
+ "/home/jake/Public/GooeyExamples/examples/"
+ "/home/pi/"
+ "/home/pi/Scripts/"
+ "/home/pi/watchdog/"
+ "/home/boca/.ssh/"
+ "/etc/ssh/"
+ "/home/pi/Projects/TunnelTest/"
+ "/etc/"
+ "/home/jake/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "custom.el"
+ "NDFD.config"
+ "combineFiles.py"
+ "GribReader.py"
+ "cloudUtils.py"
+ "cloud.py"
+ "otherWindows.py"
+ "NDFD.cfg"
+ "moveCSVToDB.py"
+ "cleanData.py"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/jake/SafeEmacs/.emacs.d/settings/" (22728 7294 958359 610000) "latex-settings.el" "helm-settings.el" "custom-functions.el" "scss-settings.el" "yaml-settings.el" "el-get-settings.el" "yasnippet-settings.el" "markdown-settings.el" "js-settings.el" "python-settings.el" "custom.el" "matlab-settings.el" "../" "camelcase-settings.el" "general-settings.el" "./" "mumamo-settings.el" "auto-complete-settings.el")
+
+ ("/home/jake/SafeEmacs/.emacs.d/" (22728 7294 962371 892000) "settings/" "snippets/" "auto-save-list/" "tramp" "el-get/" "plugins/" "abbrev_defs" "ido.last" "ac-comphist.dat" "../" "ido.last~" ".emacs.d/" "./" "%backup%~")
+
+ ("/home/jake/SafeEmacs/" (22728 7288 594978 585000) ".emacs" "../" ".emacs.d/" "./")
+
+ ("/home/jake/" (22728 8579 211383 249000) ".config/" ".tmux.conf" ".python_history" "Videos/" ".gconf/" ".profile" ".emacs" ".xsession-errors.old" ".cache/" ".zshrc" ".thumbnails/" ".bash_logout" ".sudo_as_admin_successful" ".mysql_history" ".xsession-errors" ".bash_history" ".elinks/" ".dmrc" ".aliases" ".Xauthority" "Downloads/" ".gnupg/" ".dbus/" "MySQL-Workbench/" "Music/" ".mysql/" "SafeEmacs/" "Documents/" ".local/" ".gimp-2.8/" "Desktop/" ".ICEauthority" ".gitconfig" "Pictures/" "Templates/" "Public/" "../" ".zygrib/" ".Xdefaults" ".xscreensaver" ".emacs.d/" ".cpan/" ".pki/" "./" ".bashrc" "Data/" ".ssh/" ".gnome/" "Work/")
+
+ ("/home/jake/Data/NDFD/Scripts/" (22727 8800 734219 139000) "__pycache__/" "NDFD.config" "getNDFD.pyc" "GribReader.py" "GribReader.pyc" "old/" "getRest.py" "TEST.py" ".#getNDFD.py" "getNDFD.py" "mysql-translate/" "../" "combineFiles.py" "otherWindows.pyc" "getdata_GUI/" "combineFiles.pyc" "./" "cleanData.py")
+
+ ("/home/jake/Work/CloudPyTest/" (22722 63634 573606 971000) "__pycache__/" "yiicomm.txt" "connObject.py" "perl_output.txt" "cloudUtils.py" "cloud.py" "origCloud.pl" "python_output.txt" "../" "./" "yiicomm.sql")
+
+ ("/home/jake/Data/NDFD/Scripts/getdata_GUI/" (22722 59168 443540 711000) "getNDFD.pyc" "GribReader.py" "GribReader.pyc" "window.py" "getNDFD.py" "../" "combineFiles.py" "otherWindows.pyc" "combineFiles.pyc" "./" "otherWindows.py")
+
+ ("/home/jake/Data/NDFD/Scripts/mysql-translate/" (22721 41136 773510 129000) "__pycache__/" "moveCSVToDB.py" "../" "progressBar.py" "./")
+
+ ("/home/jake/Data/" (22708 23828 0 0) "MiscData/" "SkyboxData/" "NDFD/" "../" "./")
+
+ ("/home/jake/Data/NDFD/" (22713 56680 526130 544000) "rawdata/" "../" "csvs/" "./" "Scripts/")
+
+ ("/home/jake/Work/" (22719 11426 617375 121000) "id_rsa.pub" "makeSchema.pm" "cloud_original.pl" "new_cloud.pl" "ConvertToPython/" "cloudUtils.py" "cloud.pl" "cloud.py" "rw_r01/" "Test.pl" "Errors.txt" "cloudUtils.pye" "../" "Utils.pm" "./" "yiicomm.sql" "MemLeakReports/")
+
+ ("/home/jake/Public/GooeyExamples/examples/" (22713 61477 266910 847000) "language_demo_japanese.py" "subparser_demo.py" "language_demo_russian.py" "error_demo.py" "example_progress_bar_4.py" "example_progress_bar_2.py" "simple_demo.py" "example_progress_bar_3.py" "example_progress_bar_1.py" "example_disable_stop.py" "message.pyc" "../" "__init__.py" "message.py" "widget_demo.py" "./")
+
+ ("/etc/" (22676 43913 983999 444000) "grub.d/" "inxi.conf" "ld.so.cache" "rc.local" "gdb/" "menu-methods/" "cups/" "shells" "owfs.conf" "pcmcia/" "gtk-2.0/" "gtk-3.0/" "elinks/" "initramfs-tools/" "fstab" "rc0.d/" "rc5.d/" "wgetrc" "gshadow" "network/" "host.conf" "gss/" "shadow" "libaudit.conf" "issue" "tmpfiles.d/" "kernel-img.conf" "securetty" "group" "profile" "pam.d/" "cron.d/" "brlapi.key" "UPower/" "pulse/" "legal" "cron.daily/" "hosts.deny" "ghostscript/" "bindresvport.blacklist" "pnm2ppa.conf" "mtab" "skel/" "libpaper.d/" "guest-session/" "smartmontools/" "fonts/" "speech-dispatcher/" "smartd.conf" "brltty.conf" "nsswitch.conf" "insserv.conf" "sensors3.conf" "mysql/" "libao.conf" "update-notifier/" "lighttpd/" "inputrc" "machine-id" "tomcat7/" "ucf.conf" "os-release" "ksysguarddrc" "groff/" "systemd/" "appstream.conf" "brltty/" "protocols" "vim/" "rmt" "avahi/" "group-" "kbd/" "modules" "ssh/" "cron.weekly/" "resolv.conf" "purple/" "ssl/" "popularity-contest.conf" "mailcap.order" "bash_completion" "pki/" "papersize" "xml/" "rc2.d/" "doc-base/" "insserv.conf.d/" "zsh/" "passwd" "resolvconf/" "python2.7/" "binfmt.d/" "kerneloops.conf" "rsyslog.conf" "dhcp/" "libreoffice/" "calendar/" "sysctl.d/" "debconf.conf" "sysctl.conf" "default/" "gnome-system-tools/" "ifplugd/" "emacs/" "timezone" "issue.net" "fwupd.conf" "sensors.d/" "gnome/" "vtrgb" "shadow-" "hddtemp.db" "php/" "apparmor/" "debian_version" "magic" "udev/" "vmware-tools/" "subgid-" "console-setup/" "subuid-" "sudoers.d/" "dpkg/" "aliases.db" "sane.d/" "hdparm.conf" "bash_completion.d/" "update-manager/" "phpmyadmin/" "ufw/" "python/" "cron.hourly/" "menu/" "newt/" "apm/" "xfce4/" "updatedb.conf" "s-nail.rc" "subuid" "ltrace.conf" "rsyslog.d/" "magic.mime" "nanorc" "gai.conf" "rc3.d/" "chatscripts/" "gufw/" "apparmor.d/" "mke2fs.conf" "drirc" ".java/" "usb_modeswitch.d/" "at-spi2/" "subgid" "zsh_command_not_found" "selinux/" "bash.bashrc" "insserv/" "rc1.d/" "gconf/" "udisks2/" "python3.5/" "profile.d/" "subversion/" "libnl-3/" ".pwd.lock" "dnsmasq.d/" "apt/" "sudoers" "hp/" "monit/" "sgml/" "firefox/" "kernel/" "pam.conf" "rpc" "usb_modeswitch.conf" "lintianrc" "NetworkManager/" "aliases" "deluser.conf" "upstart-xsessions" "cron.monthly/" "ca-certificates.conf" "rc6.d/" "hosts.allow" "gshadow-" "thunderbird/" "opt/" "crontab" "environment" "dbus-1/" "bluetooth/" "thermald/" "mime.types" "adduser.conf" "ca-certificates/" "logrotate.conf" "tpvmlp.conf" "vdpau_wrapper.cfg" "rc4.d/" "lightdm/" "anacrontab" "python3/" "mailcap" "authbind/" "java-8-openjdk/" "services" "dbconfig-common/" "gamin/" "perl/" "pm/" "terminfo/" "logcheck/" "su-to-rootrc" "hosts" "localtime" "ldap/" "cracklib/" "apport/" "wpa_supplicant/" "login.defs" "hostname" "iproute2/" "snmp/" "modprobe.d/" "ImageMagick-6/" "depmod.d/" "update-motd.d/" "ld.so.conf" "X11/" "init.d/" "networks" "locale.gen" "emacs24/" "apache2/" "passwd-" "lsb-release" "acpi/" "modules-load.d/" "security/" "iftab" "manpath.config" "init/" "rcS.d/" "ld.so.conf.d/" "postfix/" "alternatives/" "gnome-app-install/" "fuse.conf" "xdg/" "dictionaries-common/" "logrotate.d/" "cupshelpers/" "polkit-1/" "ppp/" "collectd/" "locale.alias" "../" "./")
+
+ ("/etc/ssh/" (22507 59773 907476 836000) "../" "./" "moduli" "ssh_config")
+
+ ("/home/pi/" (22571 45003 410708 277000) ".emacs" ".themes/" ".rnd" "PortListing.txt" ".other_aliases~" ".aliases~" ".emacs~" "20160630Anedot.pdf" ".elinks/" ".bash_aliases" ".config/" "python_games/" "Music/" ".mozilla/" "netstatus.txt" "Projects/" ".nano_history" ".other_aliases" "NetworkMon/" ".wireshark/" "Public/" "connectall.sh" "default_rules.v4" ".bashrc" "Download" "dump.txt" ".dmrc" "dump-captures/" ".xsession-errors" ".python_history" ".tmux.conf" "ProcessTunnels/" ".thumbnails/" ".links2/" ".gconf/" "simple-tree.txt" "backups/" "test.sh" ".FormScanner/" "ftp/" "Temp/" "temp.txt" ".lesshst" ".Xauthority" "../" ".gnome2/" ".gstreamer-0.10/" ".gnupg/" ".gtkrc-2.0" "Desktop/" ".selected_editor" "html.tar.gz" "NEW_IMAGE_SETUP_NOTES.txt" ".eclipse/" "Documents/" "2016-08-04-120329_1392x868_scrot.png" ".dbus/" ".ssh/" ".vnc/" "fromboca2/" ".asoundrc" "2016-07-08-120708_1392x868_scrot.png" "capturenet.sh" "test.sh~" ".swt/" "Videos/" "default-ssl.conf" "connectboca.sh" ".profile" "fromnorth/" "nettest.txt" ".oracle_jre_usage/" "err.txt" ".aliases" ".gnome2_private/" "Downloads/" ".java/" "fromboca/" "connectall.sh~" ".bash_logout" ".claws-mail/" ".xsessionrc" "router.txt" ".WolframEngine/" ".xsession-errors.old" ".codeblocks/" ".viminfo" "Templates/" ".bash_history" "Scripts/" "sites-available/" ".Wolfram Research/" "watchdog/" ".pip/" ".local/" "Pictures/" "./" "2016-08-04-120330_1392x868_scrot.png" ".cache/" ".emacs.d/")
+
+ ("/home/boca/.ssh/" (22555 30114 830030 652000) "2223key" "boca_rsa.pub" "../" "README" "id_rsa.pub" "authorized_keys.save" "authorized_keys" "README~" "id_rsa" "authorized_keys.bu" "known_hosts" "./" ".authorized_keys" "id_001.pub")
+
+ ("/home/pi/Scripts/" (22564 45360 27287 200000) "sendToAll.sh" "../" "./")
+
+ ("/home/pi/watchdog/" (22564 42656 229925 971000) "rw_r01.txt" "memstats.txt" "ORIG_dumpyiicomm.sh" "test.sh" "../" "dumpyiicomm.sh" "memdata.sh" "watchdogtest.sh" "dumpyiicomm.sh~" "./")
+
+ ("/home/" (22547 49627 949712 550000) "pi/" "jake/" "../" "alpha/" "boca/" "./")
+
+ ("/home/boca/watchdog/" (22406 37888 702679 32000) "test.sh" "../" "./")
+
+ ("/home/boca/" (22564 43023 879586 476000) ".bashrc~" ".lhistory" "sites/" "transfer/" ".bashrc" "newif_rsa.pub" "ftp/" "temp.txt" ".lesshst" ".Xauthority" "../" "uploads/" ".ssh/" "bocadata/" ".profile" "dumpyiicomm.sh" "temp_rsa.pub" ".bash_logout" "TT.tar.gz" ".bash_history" "watchdog/" "./" ".emacs.d/")
+
+ ("/var/" (22354 28156 698905 314000) "www/" "spool/" "tmp/" "lock/" "run/" "swap" "backups/" "../" "opt/" "agentx/" "log/" "lib/" "local/" "./" "cache/" "mail/")
+
+ ("/var/www/" (22354 28156 698905 314000) "html/" "../" "./")
+
+ ("/var/www/html/" (22545 5330 109135 948000) "index.php" "ptrw/" "pasco2016/" "../" "pages.txt" "images/" "eng005/" "./")
+
+ ("/home/pi/Projects/TunnelTest/" (22418 36290 608323 446000) "include/" "obj/" "TunnelTest.depend" "TunnelTest.cbp" "main.cpp" "temp.txt" "TunnelTest.layout" "../" "err.txt" "src/" "bin/" "./")
+
+ ("/home/pi/Projects/TunnelTest/src/" (22368 34029 386107 330000) "SocketList.cpp" "../" "SocketTest.cpp" "./")
+
+ ("/home/jake/NNs/" (22328 44893 566384 276000) "ML_final_prog/" "../" "./")
+
+ ("/home/jake/NNs/ML_final_prog/" (22328 44947 80249 789000) "../" "cs497Eproj/" "./")
+
+ ("/home/jake/NNs/ML_final_prog/cs497Eproj/" (22328 47230 327607 129000) ".git/" ".#ResNet.py" "proj_dataloader.py" "../" "proj_data/" "ResNet.py" "#ResNet.py#" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

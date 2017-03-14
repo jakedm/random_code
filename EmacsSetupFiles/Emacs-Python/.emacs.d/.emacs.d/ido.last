@@ -1,0 +1,44 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/" . "jake/")
+ ("/" . "home/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/pi/watchdog/"
+ "/home/pi/"
+ "/home/pi/Projects/yiicomm/"
+ "/home/jake/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "dumpyiicomm.sh"
+ ".emacs"
+ "cloud.pl"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/pi/watchdog/" (22554 8860 892161 163000) "memdata.sh" "lastreboot.txt" "x.sh" "watchdogtest.sh" "watchdog.sh" "dumpyiicomm.sh~" "mycron" "out.txt" "x.sql.bz2" "../" "memlog.txt" "shutdown.txt" "nonvoldata.bin" "./" "watchdogtest.sh~" "dumpyiicomm.sh" "processes.txt" "x.com" "out.c")
+
+ ("/home/pi/" (22554 10303 50765 206000) ".emacs.d/" "Desktop/" ".bash_history" "Public/" "Downloads/" ".gstreamer-0.10/" ".thumbnails/" "Documents/" ".gnupg/" ".cache/" "Videos/" ".gconf/" ".aliases" "temp/" "python_games/" ".themes/" "Templates/" "TEST/" ".asoundrc" ".emacs~" "../" ".cpan/" ".xsession-errors" ".profile" "shutdown.txt" ".mysql_history" "Pictures/" "./" ".bashrc" ".Xauthority" ".local/" ".tmux.conf" "Music/" "Projects/" "watchdog/" ".dbus/" ".bash_logout" ".ssh/" ".xsession-errors.old" ".emacs" ".pki/" ".config/")
+
+ ("/home/pi/Projects/yiicomm/" (22538 34967 735110 127000) "kickoff.sh" "perlbug.rep" ".output.txt" "cloud.pl" "readme.txt" "cloud.xml" "cloudold.pl" "ROSEWATER-HTTP-API Rev01p7.docx" "cloud.pl~" "cloudtest.pl" "output.txt" "cloud105.pl" "../" "files.txt" "procedure.txt" "yiicomm.sql" "./" "Test_Output/" "OG_cloud.pl" "TRUE_OP.txt" "test_cloud.pl" "datanow (9).sql" "cloudmay17.pl")
+
+ ("/home/" (22252 29928 651933 498000) "jake/" "../" "./")
+
+ ("/home/jake/" (22328 47203 510911 718000) ".zcompdump" ".pki/" ".ssh/" "Videos/" ".oh-my-zsh/" ".xinputrc" "Templates/" ".ICEauthority" ".gnome/" ".mozilla/" "radiohead/" ".zsh-update" "CS497E/" "Dropbox/" ".gconf/" ".zcompdump-jake-HP-2000-Notebook-PC-5.1.1" ".subversion/" "Downloads/" ".xsession-errors.old" ".tmux.conf~" "Public/" ".Xauthority" ".gitconfig" ".tmux.conf" ".dmrc" "Est_Project/" ".icons/" ".hplip/" ".thumbnails/" ".local/" ".cache/" ".gksu.lock" "Python-2.7.11/" ".kde/" ".gnupg/" ".dbus/" ".bash_history" "Music/" ".mysql/" ".theano/" ".emacs.d/" ".xsession-errors" ".dropbox-dist/" ".sudo_as_admin_successful" ".bash_logout" "Desktop/" ".config/" "poster_work/" ".gtkrc-2.0" ".keras/" "NNs/" ".emacs" "../" ".zshrc~" ".profile" "examples.desktop" ".pip/" ".bashrc" ".zshrc" ".zsh_history" ".xscreensaver" "Documents/" "Pictures/" "nautilus-dropbox-2015.10.28/" ".zshrc.pre-oh-my-zsh" ".emacs~" ".dropbox/" ".thunderbird/" "./")
+
+ ("/home/jake/NNs/" (22328 44893 566384 276000) "ML_final_prog/" "../" "./")
+
+ ("/home/jake/NNs/ML_final_prog/" (22328 44947 80249 789000) "../" "cs497Eproj/" "./")
+
+ ("/home/jake/NNs/ML_final_prog/cs497Eproj/" (22328 47230 327607 129000) ".git/" ".#ResNet.py" "proj_dataloader.py" "../" "proj_data/" "ResNet.py" "#ResNet.py#" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
