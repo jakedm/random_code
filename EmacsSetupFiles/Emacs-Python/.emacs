@@ -87,7 +87,7 @@
 ;; Python Error Checking/Dispay
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
-(setq py-autopep8-options '("--ignore=E501,W293,W391,W690"))
+(setq py-autopep8-options '("--ignore=E501,W293,W391,W690,E241"))
 
 (when (require 'flycheck nil t)
   ;;(setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
