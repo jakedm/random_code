@@ -2,6 +2,10 @@
 ;;;  Custom Set Faces  ;;;
 ;------------------------;
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(ein:cell-input-area ((t (:background "#042028"))))
  '(ein:cell-input-prompt ((t (:inherit header-line :background "#002b35" :foreground "#859900" :inverse-video nil :weight bold))))
  '(ein:cell-output-prompt ((t (:inherit header-line :background "#002b35" :foreground "#dc322f" :inverse-video nil :weight bold))))
@@ -17,7 +21,7 @@
  '(markdown-header-face-5 ((t (:inherit markdown-header-face :slant italic :weight bold))))
  '(markdown-header-face-6 ((t (:inherit markdown-header-face :slant italic :weight normal))))
  '(markdown-math-face ((t (:inherit font-lock-string-face :foreground "#cb4b16" :slant italic))))
-  '(py-variable-name-face ((t (:inherit default :foreground "#268bd2")))))
+ '(py-variable-name-face ((t (:inherit default :foreground "#268bd2")))))
 
 
 ;-------------------------;
@@ -69,6 +73,9 @@
 ;;; Modes ;;;
 ;-----------;
 
+(elpy-enable)
+(add-hook 'python-mode-hook 'elpy-mode)
+
 ;; Ido mode
 (require 'ido)
 (ido-mode 1)
@@ -91,12 +98,12 @@
 ;; Auto-modes ;;
 (setq auto-mode-alist
    (append
-     '(("\\.py\\'" . elpy-mode)
-     ("\\.cpp\\'" . c++-mode)
-     ("\\.php\\'" . php-mode)
-     ("\\.json\\'" . json-mode)
-     ("\\.css\\'" . web-mode)
-     ("\\.html\\'" . web-mode))
+     '(("\\.py\\'" . python-mode)
+       ("\\.cpp\\'" . c++-mode)
+       ("\\.php\\'" . php-mode)
+       ("\\.json\\'" . json-mode)
+       ("\\.css\\'" . web-mode)
+       ("\\.html\\'" . web-mode))
     auto-mode-alist))
 
 ;-------------------------;
@@ -135,3 +142,10 @@
           (replace-match "" nil nil))))))
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(python-indent-offset 2)
+ '(python-shell-interpreter "python3"))
