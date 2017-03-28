@@ -13,7 +13,7 @@
 if [ "$TERM" != "dumb" ]; then
     eval `dircolors -b`
     alias ls='ls -hF --color=auto'
-	alias la='ls -halt --color=auto'
+    alias la='ls -hAlt --color=auto'
     #alias ls='du -s */* | sort -n'
     alias dir='ls --color=auto --format=vertical'
     alias vdir='ls --color=auto --format=long'
