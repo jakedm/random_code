@@ -8,7 +8,7 @@ echo Default GUI is ${GUI[$DEFAULT]}, reset script to change.
 sleep 5
 
 echo Installing Xorg:
-sudo apt-get $FLAGS xserver-xorg
+sudo apt-get install $FLAGS xserver-xorg
 echo
 echo
 
