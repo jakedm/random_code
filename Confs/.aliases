@@ -2,6 +2,13 @@
 # List of necessary packages just for bash functions:
 #   mdfinder.app
 #   elinks
+#   inxi
+#   curl
+#
+# List of aliased packages (or ones that are important)
+#   python-pip
+#   emacs
+#   htop
 #
 ########################################################
 
@@ -22,14 +29,10 @@ if [ "$TERM" != "dumb" ]; then
     alias egrep='egrep --color=auto'
 fi
 alias work='/home/hutch_research/workspaces/moorhej'
-alias lock='qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock'
-alias logout='qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1'
 alias net='${BROWSER} 2>/dev/null &'
 alias hardware='inxi -Fx'
 alias weather='curl http://wttr.in/Seattle'
-alias venv='source ~/venv/bin/activate'
 alias e='emacs -nw $1'
-alias pip="pip3"
 
 #------------------------------------------////
 # FUNCTIONS:
