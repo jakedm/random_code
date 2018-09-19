@@ -16,25 +16,6 @@ LIGHTPURPLE='\e[1;35m'
 YELLOW='\e[1;33m'
 WHITE='\e[1;37m'
 NC='\e[0m'              # No Color
-
-#------------------------------------------////
-# SYSTEM PKG CHECK:
-#------------------------------------------////
-LST=( "python-pip" "emacs" "htop" "tmux" "mdfinder.app" "elinks" "inxi" "curl" )
-INSTALL=()
-for i in "${LST[@]}"; do
-    if [ $(dpkg-query -W -f='${Status}' $i 2>/dev/null | grep -c "ok installed") -eq 0 ]; then
-        INSTALL+=("$i")
-    fi
-done
-
-if [[ ${#INSTALL[@]} -gt 0 ]]; then
-    echo "Installing ${INSTALL[@]}..."
-    sudo apt-get -y install "${INSTALL[@]}";
-    echo "Installed all packages."
-    sleep 3
-    clear
-fi
 #-------------------- BASH SETTINGS --------------------------
 export TERM=xterm-256color
 export BROWSER=/usr/bin/google-chrome
@@ -44,6 +25,8 @@ export EDITOR="emacs"
 export HISTCONTROL=ignoredups
 # ... and ignore same sucessive entries.
 export HISTCONTROL=ignoreboth
+export HISTIGNORE="*ls:*la:*clear*:*exit*"
+export MANPAGER="/usr/bin/most -s"
 #-------------------- CUSTOMIZATION --------------------------
 
 # check the window size after each command and, if necessary,
@@ -60,6 +43,10 @@ force_color_prompt=yes
 #alias rm='mv -t ~/.local/share/Trash/files' # For Ubuntu only
 alias r='source ~/.bashrc'
 . ~/.aliases
+
+# Better Autocomplete
+bind 'set show-all-if-ambiguous on'
+bind 'TAB:menu-complete'
 
 #------------------------------------------////
 # PROMPT:
@@ -93,27 +80,27 @@ PS1='\[\e[0;36m\]┌─\[\e[1;37m\][\u@\[\e[${hostnamecolor}m\]\h\[\e[1;37m\]]\[
 # this will display the username, date, time, a calendar, the amount of users, and the up time.
 welcome ()
 {
-    clear
-    # Gotta love ASCII art with figlet
-    #figlet "Welcome, " $USER;
-    #echo -e "${LIGHTBLUE}"; echo "Welcome, " $USER;
-    #for i in `seq 1 15` ; do spin; done ;
-    #echo -ne "${WHITE} Welcome, " $USER;
-    #for i in `seq 1 15` ; do spin; done ;echo "";
-    echo -e "${LIGHTCYAN}"; echo "----------------------------------------------------------------";
-    #echo -ne "${RED}Today is:\t\t${CYAN}" `date`; echo ""
-    if [[ $(date +%p) == 'AM' ]]                   #%p is either AM or PM called from date
-    then echo -ne  "${WHITE}Good morning $USER. \t\t\t\t"  # note echo statements alway end with newline char, printf doesn't
-    else echo -ne  "${WHITE}Good afternoon $USER. \t\t\t\t"
-    fi
-    echo ""
-    echo -ne "${RED}Today is:\t\t${CYAN}" `date`; echo ""
-    echo -e "${RED}Kernel Information: \t${CYAN}" `uname -smr`
-    echo -ne "${PURPLE}"; upinfo; echo ""
-    #echo -ne "${CYAN}"; uptime; echo ""
-    echo -e "${GREEN}"; cal -3; echo ""
-    #echo -e "${RED}"; weather; echo ""
-    echo -e "${LIGHTCYAN}"; echo "----------------------------------------------------------------";
+		clear
+		# Gotta love ASCII art with figlet
+		#figlet "Welcome, " $USER;
+		#echo -e "${LIGHTBLUE}"; echo "Welcome, " $USER;
+		#for i in `seq 1 15` ; do spin; done ;
+		#echo -ne "${WHITE} Welcome, " $USER;
+		#for i in `seq 1 15` ; do spin; done ;echo "";
+		echo -e "${LIGHTCYAN}"; echo "----------------------------------------------------------------";
+		#echo -ne "${RED}Today is:\t\t${CYAN}" `date`; echo ""
+		if [[ $(date +%p) == 'AM' ]]                   #%p is either AM or PM called from date
+		then echo -ne  "${WHITE}Good morning $USER. \t\t\t\t"  # note echo statements alway end with newline char, printf doesn't
+		else echo -ne  "${WHITE}Good afternoon $USER. \t\t\t\t"
+		fi
+		echo ""
+		echo -ne "${RED}Today is:\t\t${CYAN}" `date`; echo ""
+		echo -e "${RED}Kernel Information: \t${CYAN}" `uname -smr`
+		echo -ne "${PURPLE}"; upinfo; echo ""
+		#echo -ne "${CYAN}"; uptime; echo ""
+		echo -e "${GREEN}"; cal -3; echo ""
+		#echo -e "${RED}"; weather; echo ""
+		echo -e "${LIGHTCYAN}"; echo "----------------------------------------------------------------";
 }
 
 # Check to see if prompt is interactive; if not, don't print welcome message.
